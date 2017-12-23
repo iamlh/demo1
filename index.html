@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content ="text/html; charset=utf-8" />
+	<title>登录-分销商采购平台V3.0</title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td,form{
+			margin:0;
+			padding:0;
+			font-size:12px;
+			font-family: "微软雅黑","sans-serif";
+			color:#000;
+		}
+		
+		.header{
+			height:114px;
+			background:#fff;
+		}
+		.header-wrap{
+			width:980px;
+			height:114px;
+			margin:0 auto;
+			position:relative;
+		}
+		.header .logo{
+			width:980px;
+			height:114px;
+			position:absolute;
+			top:0px;
+			left:0px;
+			background: url(./image/logo.gif) left center no-repeat;
+		}
+		.header .dlapp{
+			position:absolute;
+			right:0;
+			top:14px;
+		}
+		.header .dlapp .appgif{
+			width:106px;
+			height:100px;
+		}
+		.header .dlapp .wx_qr{
+			display:none;
+			position:absolute;
+			background:#fff;
+			width:150px;
+			padding:10px;
+			border:1px solid #f1f1f1;
+			border-radius: 3px;
+			left:50%;
+			margin-left:-80px;
+			top:100px;
+			border-top:none;
+			box-shadow:0px 0px 3px rgba(0,0,0,0.3);
+			z-index:9999;
+		}
+		.header .dlapp .wx_qr img{
+			width:100%;
+			height: 100%;
+		}
+		.header .dlapp .wx_qr p{
+			color:red;
+			font-size:16px;
+			text-align:center;
+		}
+		.body{
+			height: auto;
+			background: url(./image/bg-body-wrap.gif) center bottom repeat-x #A8DBF7;
+		}
+		.body-wrap{
+			height:714px;
+			width:980px;
+			margin:0 auto;
+			position:relative;
+		}
+		.body-center{
+			position:absolute;
+			top:197px;
+			left:0px;
+			background:url(./image/ib.png) 0 0 no-repeat;
+			width:900px;
+			height: 320px;
+		}
+		.login-box{
+			width:340px;
+			height:270px;
+			padding:20px;
+			position:absolute;
+			right:0px;
+			top:200px;
+			z-index:99;
+			background:rgba(255,255,255,0.7);
+			border-radius:10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+		}
+		.login-box .login-box-title{
+			font-size:18px;
+			text-align:center;
+			line-height:24px;
+			margin-bottom: 10px;
+		}
+		.login-box .login-box-row{
+			padding:6px 0;
+		}
+		.login-box .login-box-txt{
+			width:72px;
+			height: 32px;
+			text-align:right;
+			line-height:32px;
+			font-size:14px;
+			color:#000;
+			float:left;
+
+		}
+		.login-box .login-box-ctrl{
+			height:32px;
+			line-height:32px;
+			float:left;
+			padding:0 3px;
+		}
+		.login-box-ctrl input{
+			width:160px;
+			height:30px;
+			border:1px solid #ddd;
+			padding:0 5px;
+			line-height:30px;
+			color:#e74c3c;
+			font-size:14px;
+			
+		}
+		.login-box-row .login-box-link{
+			float:left;
+			height: 32px;
+			line-height:32px;
+			padding:0 3px;
+		}
+		.login-box-row .login-box-link a{
+			color:#34495e;
+			text-decoration:none;
+			font-size:12px;
+		}
+		.login-box-row .login-box-link a:hover{
+			text-decoration:underline;
+			color:red;
+		}
+		.clear{
+			display:block;
+			height:auto;
+			width:auto;
+			padding:0;
+			margin:0;
+			clear:both;
+			font-size:0;
+			line-height:normal;
+		}
+		.check-code{
+			height:32px;
+			float:left;
+		}
+		.check-code input{
+			width:85px;
+			border:1px solid #ddd;
+			height:30px;
+			padding:0 5px;
+			line-height:30px;
+			color:#e74c3c;
+			font-size:14px;
+			float:left;
+
+		}
+		.check-code img{
+			height:30px;
+			width:75px;
+			border:1px solid #ddd;
+			float:left;
+			margin-left:-1px;
+			position:relative;
+			cursor:pointer;
+		}
+		.login-box .login-btn a{
+			display:block;
+			margin:0 auto;
+			width:132px;
+			height:32px;
+			line-height: 32px;
+			font-size: 14px;
+			color: #fff;
+			background:#e74c3c;
+			text-align:center;
+			text-decoration:none;
+			border-radius:5px;
+		}
+		.checkbox-item{
+			width:234px;
+			height:24px;
+			display:block;
+			margin:0 auto;
+			border:1px solid #fff;
+			border-radius:3px;
+		}
+		.checkbox-item input{
+			width:13px;
+			height:13px;
+			padding:0;
+			margin:6px 6px 5px 8px;
+			float:left;
+		}
+		.checkbox-item em{
+			float:left;
+			line-height:24px;
+			padding:0 8px 0 0;
+			font-style:normal;
+			font-size:12px;
+		}
+		.login-box .tip{
+			padding:3px 0;
+			text-align:center;
+			font-size:12px;
+		}
+		.login-box span{
+			padding:0 6px 0 0;
+			color:#888;
+		}
+		.login-box span b{
+			color:#34495e;
+			font-style:normal;
+		}
+		.footer{
+			padding:20px 0;
+		}
+		.footer-wrap{
+			width:820px;
+			margin:0 auto;
+			line-height:18px;
+			color:#888;
+			text-align:center;
+		}
+		li.singleInfo{
+			width:85px;
+		}
+		.honor{
+			width:450px;
+			overflow:hidden;
+			margin:10px auto;
+		}
+		.honor li{
+			float:left;
+			height:34px;
+			margin-right:3px;
+			position:relative;
+			list-style:none;
+		}
+		.honor li a{
+			float:left;
+			line-height:15px;
+			vertical-align:middle;
+			text-align:right;
+			text-decoration:none;
+			color:#999;
+		}
+		.honor .it-police{
+			background:url(./image/ebsIcon.jpg) 0 0 no-repeat ;
+			padding:5px 0 5px 30px;
+		}
+		.honor .wellMark{
+			background:url(./image/dssfIcon.jpg) 0 0 no-repeat ;
+			padding:5px 0 5px 55px;
+		}
+		.honor .creditImg{
+			background:url(./image/12315Icon.jpg) 0 0 no-repeat ;
+			padding:5px 0 5px 30px;
+		}
+
+		
+	</style>
+</head>
+<body>
+		<div class="header">
+			<div class="header-wrap">
+				<div class="logo"></div>
+				<div class="dlapp">
+					<img class="appgif" src="./image/wGIF.gif" alt="download">
+					<div class="wx_qr">
+						<img src="./image/dapp.png" alt="扫描下载">
+						<p class="text">扫码下载APP</p>
+					</div>
+				</div>
+			</div>
+		</div><!--header结束-->
+		<div class="body">
+			<div class="body-wrap">
+				<div class="body-center"></div>
+				<div class="login-box">
+					<div class="login-box-title">用户登录</div>
+					<div class="login-box-row">
+						<span class="login-box-txt">登录账号：</span>
+						<div class="login-box-ctrl">
+							<input type="text" name="txtAccount">
+						</div>
+						<div class="login-box-link"><a href="#">注册会员</a></div>
+						<div class="clear"></div>
+					</div>
+					<div class="login-box-row">
+						<span class="login-box-txt">登录密码：</span>
+						<div class="login-box-ctrl">
+							<input type="password" name="txtPassword">
+						</div>
+						<div class="login-box-link"><a href="#">忘记密码？</a></div>
+						<div class="clear"></div>
+					</div>
+					<div class="login-box-row">
+						<span class="login-box-txt">验证码：</span>
+						<div class="login-box-ctrl">
+							<div class="check-code">
+								<input type="text" name="checkcode">
+								<img src="/webcomm/verification_code.aspx" title="点击更换" alt="点击更换">
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="login-box-row login-btn">
+						<a class="login-button" href="javascript:;">登录</a>
+					</div>
+					<div class="login-box-row chkbox">
+						<!-- <label class="checkbox-item" for="chkAutoLogin" >
+							<input type="checkbox" id="chkAutoLogin">
+							<em>下次自动登录</em>
+						</label> -->
+						<label for="chkAccount" class="checkbox-item">
+							<input type="checkbox" id="chkAccount">
+							<em>记住账号</em>
+						</label>
+						<div class="clear"></div>
+					</div>
+					<div class="login-box-row tip">
+						<span>
+							公共用户名：
+							<b>kl888</b>
+						</span>
+						<span>
+							登录密码：
+							<b>888888</b>
+						</span>
+					</div>
+
+				</div><!-- login-box结束 -->
+			</div>			
+		</div><!--body结束-->
+		<div class="footer">
+			<div id="copyright" class="footer-wrap">
+				电信增值业务经营许可证编号：苏B1-20120038/苏B2-20120205<<br />
+				版权所有：八爪鱼在线旅游发展有限公司
+			</div>
+			<ul class="honor">
+				<li class="it-police">
+					<a target="_blank" title="工商网监" href="http://www.jsdsgsxt.gov.cn/mbm/entweb/elec/certView.shtml?siteId=619cc6b2bb744e08b298599a97d77c6f">工商网监</a>
+				</li>
+				<li class="trust"><a title="诚信网站" href="https://credit.cecdc.com/CX20140721008850008580.html"><img src="./image/cxwz.jpg" alt="诚信网站"></a></li>
+				<li class="wellMark"><a  title="省电商示范企业" href="www.jiangsudoc.gov.cn/NewsDetail.asp?NewsID=76402">省电商示范企业</a></li>
+				<li class="creditImg"><a  title="全国12315互联网平台" href="http://www.12315.cn/">全国12315互联网平台</a></li>
+			</ul>
+		</div>
+</body>
+</html>
